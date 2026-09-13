@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BEST TIKTOK REGION FINDER</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="bg-glow"></div>
+
+  <main class="container">
+    <header class="header">
+      <h1 class="title">BEST TIKTOK REGION FINDER</h1>
+      <p class="subtitle">Enter any public username to get full stats & region info</p>
+    </header>
+
+    <section class="search-box">
+      <div class="input-wrap">
+        <span class="at-sign">@</span>
+        <input
+          type="text"
+          id="username"
+          class="username-input"
+          placeholder="example"
+          autocomplete="off"
+          spellcheck="false"
+        />
+      </div>
+      <button id="fetchBtn" class="fetch-btn">
+        <span class="btn-text">Fetch Data</span>
+        <span class="btn-loader" hidden></span>
+      </button>
+    </section>
+
+    <div id="error" class="error" hidden></div>
+
+    <section id="results" class="results" hidden>
+      <!-- Profile header -->
+      <div class="profile-header">
+        <img id="avatar" class="avatar" src="" alt="Avatar" />
+        <div class="profile-info">
+          <h2 id="nickname" class="nickname"></h2>
+          <p id="handle" class="handle"></p>
+          <p id="about" class="about"></p>
+        </div>
+      </div>
+
+      <!-- STATS -->
+      <h3 class="section-title">STATS</h3>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value" id="followers">—</div>
+          <div class="stat-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Followers
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="following">—</div>
+          <div class="stat-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+            Following
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="hearts">—</div>
+          <div class="stat-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            Hearts
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="videos">—</div>
+          <div class="stat-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+            Videos
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="friends">—</div>
+          <div class="stat-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Friends
+          </div>
+        </div>
+      </div>
+
+      <!-- DETAILS -->
+      <h3 class="section-title">DETAILS</h3>
+      <div class="details-list">
+        <div class="detail-row">
+          <span class="detail-icon">🌐</span>
+          <span class="detail-label">Region / Country:</span>
+          <span class="detail-value" id="country">—</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-icon">🆔</span>
+          <span class="detail-label">User ID:</span>
+          <span class="detail-value" id="userId">—</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-icon">🔒</span>
+          <span class="detail-label">Private:</span>
+          <span class="detail-value" id="private">—</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-icon">📅</span>
+          <span class="detail-label">Created:</span>
+          <span class="detail-value" id="created">—</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-icon">✏️</span>
+          <span class="detail-label">Nickname Edited At:</span>
+          <span class="detail-value" id="nickEdited">—</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-icon">👤</span>
+          <span class="detail-label">Username Changed At:</span>
+          <span class="detail-value" id="userChanged">—</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-icon">🗣️</span>
+          <span class="detail-label">Language:</span>
+          <span class="detail-value" id="language">—</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-icon">🔗</span>
+          <span class="detail-label">Bio Link:</span>
+          <span class="detail-value" id="bioLink">—</span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Private tool · Data from public sources · Not affiliated with TikTok</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
