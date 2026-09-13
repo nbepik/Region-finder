@@ -36,7 +36,18 @@
       </button>
     </section>
 
+    <!-- Optional API key for better region data -->
+    <div class="api-key-box">
+      <details>
+        <summary>⚙️ Advanced: API Key (optional)</summary>
+        <p class="api-hint">Paste your omar-thing / dev.omar-thing API key for Locked + Registered + Current region. Key is saved only in your browser.</p>
+        <input type="password" id="apiKey" class="api-key-input" placeholder="Your API key (optional)" autocomplete="off" />
+        <button id="saveKeyBtn" class="save-key-btn">Save Key</button>
+      </details>
+    </div>
+
     <div id="error" class="error" hidden></div>
+    <div id="info" class="info" hidden></div>
 
     <section id="results" class="results" hidden>
       <!-- Profile header -->
@@ -92,10 +103,20 @@
       <!-- DETAILS -->
       <h3 class="section-title">DETAILS</h3>
       <div class="details-list">
-        <div class="detail-row">
-          <span class="detail-icon">🌐</span>
-          <span class="detail-label">Region / Country:</span>
-          <span class="detail-value" id="country">—</span>
+        <div class="detail-row highlight">
+          <span class="detail-icon">🔒</span>
+          <span class="detail-label">Locked Region:</span>
+          <span class="detail-value" id="lockedRegion">—</span>
+        </div>
+        <div class="detail-row highlight">
+          <span class="detail-icon">📌</span>
+          <span class="detail-label">Registered Region:</span>
+          <span class="detail-value" id="registeredRegion">—</span>
+        </div>
+        <div class="detail-row highlight">
+          <span class="detail-icon">🌍</span>
+          <span class="detail-label">Current Region:</span>
+          <span class="detail-value" id="currentRegion">—</span>
         </div>
         <div class="detail-row">
           <span class="detail-icon">🆔</span>
@@ -103,7 +124,7 @@
           <span class="detail-value" id="userId">—</span>
         </div>
         <div class="detail-row">
-          <span class="detail-icon">🔒</span>
+          <span class="detail-icon">🔐</span>
           <span class="detail-label">Private:</span>
           <span class="detail-value" id="private">—</span>
         </div>
@@ -136,11 +157,10 @@
     </section>
 
     <footer class="footer">
-      <p>Private tool · Data from public sources · Not affiliated with TikTok</p>
+      <p>Private tool · Free mode uses public data · Add API key for full region data</p>
     </footer>
   </main>
 
   <script src="script.js"></script>
 </body>
 </html>
-
